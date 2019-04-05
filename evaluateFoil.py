@@ -7,10 +7,10 @@ import pandas as pd
 import os
 
 
-def edit_csv(file,operation):
-    data = pd.read_csv('sample16.dat')
+def open_csv(file):
+    return pd.read_csv(file)
 
-
+def save_csv(data):
     data.to_csv('sample16-2.dat', index=False)
 
 
