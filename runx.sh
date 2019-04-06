@@ -9,11 +9,12 @@ do
 	echo "pane" > xfoil.com
 	echo "oper" >> xfoil.com
 	echo "visc 1e6" >> xfoil.com
+	echo "iter 100" >> xfoil.com
 	echo "pacc" >> xfoil.com
 
 	echo $file'.analysis' >> xfoil.com
 	echo "" >> xfoil.com
-	echo "alfa 0" >> xfoil.com
+	echo "alfa 2.5" >> xfoil.com
 	echo "pacc" >> xfoil.com	
 	echo "" >> xfoil.com
 	echo "quit" >> xfoil.com

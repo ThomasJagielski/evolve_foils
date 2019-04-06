@@ -30,7 +30,12 @@ def call_xfoil():
     data = data[-1]
     data = data.split('  ')
 
-    return data[2], data[3]
+    for i in range (10):  # Number of time to try the solver before giving up
+
+        try:
+            return data[2], data[3]
+        except IndexError:
+            pass
 
 
 

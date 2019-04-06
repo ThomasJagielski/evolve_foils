@@ -9,13 +9,14 @@ import evaluateFoil
 import random
 import numpy as np
 
+
 data = evaluateFoil.open_csv('sample16.dat')
 
 # print(data.index)
 
 # print(data.iloc[0,0])
 
-for i in data.index:
+for i in data.index[20:-20]:
 
     row = data.iloc[i,0]
     row = row.split(' ')
@@ -34,7 +35,7 @@ for i in data.index:
 
 
     # number1 = (random.random()-.5)/10
-    number2 = (random.random()-.5)/1000
+    number2 = (random.random()-.5)/100
 
 
 
@@ -53,4 +54,4 @@ for i in data.index:
 # print(data.iloc[0,0])
 evaluateFoil.save_csv(data)
 
-evaluateFoil.call_xfoil()
+print(evaluateFoil.call_xfoil())
