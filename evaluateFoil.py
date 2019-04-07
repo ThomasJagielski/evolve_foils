@@ -18,8 +18,6 @@ def call_xfoil():
 
     sp.call(['./runx.sh'])
 
-
-
     file = open('results.txt',"r")
 
     data = file.read()
