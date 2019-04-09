@@ -111,10 +111,12 @@ def evaluate_foil(indiv):
     
     full_string = ''
     for j in range(len(X_COORD)):
-        if j < 50:
+        if j == 0 or j == len(X_COORD)-1 or j == 49:
+            full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(0) + '\n')
+        elif j <= 48:
             full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv[j]) + '\n')
-        else:
-            full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv[len(X_COORD)-j]) + '\n')
+        elif j > 48:
+            full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv[len(X_COORD)-j-1]) + '\n')
     
     file = open('sample16-2.dat','w')
 
