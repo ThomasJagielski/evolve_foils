@@ -8,7 +8,7 @@ do
 
 	echo "pane" > xfoil.com
 	echo "oper" >> xfoil.com
-	echo "visc 1e6" >> xfoil.com
+	
 	echo "iter 100" >> xfoil.com
 	echo "pacc" >> xfoil.com
 

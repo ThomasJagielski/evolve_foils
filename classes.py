@@ -43,7 +43,8 @@ class Individual(list):
         # Otherwise, select an initial length between min and max
         # and populate Message with that many random characters
         for i in range(50):
-            self.append(random.random()/2+.01)  # Assume that height shiould not be more than 2 times length
+            # self.append(random.random()/2+.01)  # Assume that height shiould not be more than 2 times length
+            self.append(.1)
 
 
     # TODO Add print method later if we want it
@@ -128,7 +129,7 @@ def evaluate_foil(indiv):
     # Save the data to sample16-2.dat
     cl,cd = evaluateFoil.call_xfoil()
     print(cl,cd)
-    result = cl/cd  # Fitness evaluation, could consider another option
+    result = float(cl)/float(cd)  # Fitness evaluation, could consider another option
     return (result,)
 
 

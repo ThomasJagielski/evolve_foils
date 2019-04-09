@@ -22,7 +22,7 @@ def call_xfoil():
 
     data = file.read()
     file.close()
-    open('results.txt', 'w').close()
+    # open('results.txt', 'w').close()
     data = data.split('-----')
 
     data = data[-1]
@@ -31,7 +31,7 @@ def call_xfoil():
     for i in range (10):  # Number of time to try the solver before giving up
 
         try:
-            return data[2], data[3]
+            return data[2], data[4]  # 4 for non visc 3 for visc
         except IndexError:
             pass
 
