@@ -43,8 +43,8 @@ class Individual(list):
         # Otherwise, select an initial length between min and max
         # and populate Message with that many random characters
         for i in range(50):
-            # self.append(random.random()/2+.01)  # Assume that height shiould not be more than 2 times length
-            self.append(.1)
+            self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+            # self.append(.1)
 
 
     # TODO Add print method later if we want it
@@ -66,7 +66,38 @@ class Individual(list):
 
 
 
-def mutate(indiv, mutpb):
+# def mutate(indiv, mutpb):
+#     """
+#     Randomly add or subtract a value between 0 and 0.50 with a probability of mutpb
+    
+#     Argument(s):
+#     indiv - individual represented by points
+#     mutpb - mutation probability
+
+#     Returns a mutated individual as a list
+#     """
+    
+#     op = random.randint(0,51)/100
+#     pb = random.randint(0,101)/100
+#     co = random.randint(0,101)/100
+    
+#     if pb >= mutpb:
+#         r1 = random.randint(0,1)
+#         if r1 == 0:
+#             indiv[co] += op
+#             if indiv[co] > 0.51:
+#                 indiv[co] = 0.51
+#         else:
+#             indiv[co] -= op
+#             if indiv[co] < 0.01:
+#                 indiv[co] = 0.01 
+#         return indiv
+#     else:
+#         return indiv
+    
+#     pass
+
+def mutate(indiv):
     """
     Randomly add or subtract a value between 0 and 0.50 with a probability of mutpb
     
@@ -77,25 +108,23 @@ def mutate(indiv, mutpb):
     Returns a mutated individual as a list
     """
     
-    op = random.randint(0,51)/100
-    pb = random.randint(0,101)/100
-    co = random.randint(0,101)/100
+    op = int(random.randint(0,51)/100)
+    pb = int(random.randint(0,101)/100)
+    co = int(random.randint(0,101)/100)
     
-    if pb >= mutpb:
-        r1 = random.randint(0,1)
-        if r1 == 0:
-            indiv[co] += op
-            if indiv[co] > 0.51:
-                indiv[co] = 0.51
-        else:
-            indiv[co] -= op
-            if indiv[co] < 0.01:
-                indiv[co] = 0.01 
-        return indiv
+   
+    r1 = random.randint(0,1)
+    if r1 == 0:
+        indiv[co] += op
+        if indiv[co] > 0.51:
+            indiv[co] = 0.51
     else:
-        return indiv
-    
-    pass
+        indiv[co] -= op
+        if indiv[co] < 0.01:
+            indiv[co] = 0.01 
+    return (indiv,)
+
+
 
 def evaluate_foil(indiv):
     """
@@ -129,7 +158,10 @@ def evaluate_foil(indiv):
     # Save the data to sample16-2.dat
     cl,cd = evaluateFoil.call_xfoil()
     print(cl,cd)
-    result = float(cl)/float(cd)  # Fitness evaluation, could consider another option
+    try:
+        result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
+    except ValueError:
+        result = 0
     return (result,)
 
 
