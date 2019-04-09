@@ -114,4 +114,5 @@ if __name__ == "__main__":
 
     # Run evolutionary algorithm
     pop, log, hof = evolve()
-    classes.evaluate_foil(hof)
+    print(hof)
+
