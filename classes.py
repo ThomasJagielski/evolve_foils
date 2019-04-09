@@ -59,7 +59,14 @@ class Individual(list):
     #                            val=self.get_text())
     
 
+class ViewIndividual(list):
+    
 
+    def __init__(self, data):
+        
+        for i in range(len(data)):
+            self.append(data[i])  # Assume that height shiould not be more than 2 times length
+            # self.append(.1)
 
 
 
@@ -160,7 +167,7 @@ def evaluate_foil(indiv):
     print(cl,cd)
     try:
         result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
-    except ValueError:
+    except (ValueError, ZeroDivisionError):
         result = 0
     return (result,)
 

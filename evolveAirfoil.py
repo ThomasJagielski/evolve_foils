@@ -25,7 +25,7 @@ import classes
 
 
 # Control whether all Messages are printed as they are evaluated
-VERBOSE = True
+VERBOSE = False
 
 
 
@@ -115,4 +115,6 @@ if __name__ == "__main__":
     # Run evolutionary algorithm
     pop, log, hof = evolve()
     print(hof)
+    best = classes.ViewIndividual(hof)
+    classes.evaluate_foil(best[0])
 
