@@ -20,7 +20,7 @@ do
 	echo "quit" >> xfoil.com
 
 	#we then run xfoil with its STDIN hooked up to the text file where we just wrote the commands to
-	xfoil $file < xfoil.com
+	xfoil $file < xfoil.com > /dev/null 2>&1
 
 	#copy the results to a results.txt file and then delete the original file
     cp sample16-2.dat.analysis results.txt
