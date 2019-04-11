@@ -13,14 +13,14 @@ X_COORD = np.linspace(1,0,50).tolist()
 X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
 for i in range(len(X_COORD)):
     X_COORD[i] = round(X_COORD[i],6)
-print(X_COORD)
+# print(X_COORD)
 
 class FitnessMinimizeSingle(base.Fitness):
     """
     Class representing the fitness of a given individual, with a single
     objective that we want to maximize (weight = 1)
     """
-    weights = (1.0,)
+    weights = (-1.0,)
 
 
 class Individual(list):
@@ -30,6 +30,71 @@ class Individual(list):
     be more easily manipulated by the genetic operators.
     """
 
+    # def __init__(self):
+    #     """Create a new Message individual.
+
+    #     If starting_string is given, initialize the Message with the
+    #     provided string message. Otherwise, initialize to a random string
+    #     message with length between min_length and max_length.
+    #     """
+    #     # Want to minimize a single objective: distance from the goal message
+    #     self.fitness = FitnessMinimizeSingle()
+
+    #     # Otherwise, select an initial length between min and max
+    #     # and populate Message with that many random characters
+    #     for i in range(50):
+    #         self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+    #         # self.append(.1)
+    # def __init__(self):
+    #     """Create a new Message individual.
+
+    #     If starting_string is given, initialize the Message with the
+    #     provided string message. Otherwise, initialize to a random string
+    #     message with length between min_length and max_length.
+    #     """
+    #     # Want to minimize a single objective: distance from the goal message
+    #     self.fitness = FitnessMinimizeSingle()
+
+    #     # Otherwise, select an initial length between min and max
+    #     # and populate Message with that many random characters
+    #     for i in range(50):
+    #         if i == 0:
+    #             self.append(0)
+    #         else:
+    #             direction = random.choice([-1,1])
+    #             value = self[-1]+direction/25
+    #             if value <=0:
+    #                 value = .01
+    #             self.append(value)
+    #         # self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+    #         # # self.append(.1)
+
+    # def __init__(self):
+    #     """Create a new Message individual.
+
+    #     If starting_string is given, initialize the Message with the
+    #     provided string message. Otherwise, initialize to a random string
+    #     message with length between min_length and max_length.
+    #     """
+    #     # Want to minimize a single objective: distance from the goal message
+    #     self.fitness = FitnessMinimizeSingle()
+
+    #     # Otherwise, select an initial length between min and max
+    #     # and populate Message with that many random characters
+    #     # def point(a,b,c,d,e,n):
+    #     #     point = 1/.2*(a*(n/50)**1/2+b*(n/50)+c*(n/50)**2+d*(n/50)**3+e*(n/50)**4)
+    #     #     return point
+    #     # for i in range(50):
+    #     #     self.append(point(.2969,-.126,-.3516, .2843,-.1015,i))
+    #     def point(a,n):
+    #         point = -a*(n-25)**2+.15
+    #         return point
+    #     for i in range(50):
+    #         self.append(point(.0002,i))
+            
+    #         self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+    #         # self.append(.1)
+
     def __init__(self):
         """Create a new Message individual.
 
@@ -37,14 +102,67 @@ class Individual(list):
         provided string message. Otherwise, initialize to a random string
         message with length between min_length and max_length.
         """
-        # Want to minimize a single objective: distance from the goal message
+    # Want to minimize a single objective: distance from the goal message
         self.fitness = FitnessMinimizeSingle()
 
         # Otherwise, select an initial length between min and max
         # and populate Message with that many random characters
+        # def point(t,a,b,c,d,e,n):
+        #     point = 500*t*(a*(n/50)**1/2+b*(n/50)+c*(n/50)**2+d*(n/50)**3+e*(n/50)**4)
+        #     return point
+        # for i in range(50):
+        #     self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
+        def point(t,a,b,c,d,e,n):
+            point = 5*.16*t*(a*(n*2)**1/2+b*(n*2)+c*(n*2)**2+d*(n*2)**3+e*(n*2)**4)
+            return point
         for i in range(50):
-            self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+            
+            self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
+
+            print(X_COORD[i])
+            print(self[-1])
+        # def point(a,n):
+        #     point = -a*(n-25)**2+.15
+        #     return point
+        # for i in range(50):
+        #     self.append(point(.0002,i))
+            
+            # self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
             # self.append(.1)
+
+    # def __init__(self):
+    #     """Create a new Message individual.
+
+    #     If starting_string is given, initialize the Message with the
+    #     provided string message. Otherwise, initialize to a random string
+    #     message with length between min_length and max_length.
+    #     """
+    #     # Want to minimize a single objective: distance from the goal message
+    #     self.fitness = FitnessMinimizeSingle()
+
+    #     # Otherwise, select an initial length between min and max
+    #     # and populate Message with that many random characters
+    #     # def point(a,b,c,d,e,n):
+    #     #     point = 1/.2*(a*(n/50)**1/2+b*(n/50)+c*(n/50)**2+d*(n/50)**3+e*(n/50)**4)
+    #     #     return point
+    #     # for i in range(50):
+    #     #     self.append(point(.2969,-.126,-.3516, .2843,-.1015,i))
+        
+    #     for i in range(50):
+    #         if i == 0:
+    #             derivative = .01
+    #             self.append(0)
+    #         else:
+    #             secondDerivative = (random.choice([-1,1]))/100
+    #             print(secondDerivative)
+    #             derivative += secondDerivative
+    #             value = self[-1]+derivative/3
+    #             if value <=0:
+    #                 value = .01
+    #             self.append(value)
+    #         # self.append(random.random()/20+.01)  # Assume that height shiould not be more than 2 times length
+    #         # # self.append(.1)
+            
 
 
     # TODO Add print method later if we want it
@@ -164,11 +282,12 @@ def evaluate_foil(indiv):
     
     # Save the data to sample16-2.dat
     cl,cd = evaluateFoil.call_xfoil()
-    print(cl,cd)
+    print(cd)
     try:
-        result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
+        # result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
+        result = abs(float(cd))
     except (ValueError, ZeroDivisionError):
-        result = 0
+        result = 100
     return (result,)
 
 

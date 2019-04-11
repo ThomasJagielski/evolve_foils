@@ -68,7 +68,7 @@ def evolve():
 
     # Get a configured toolbox and create a population of random Messages
     toolbox = get_toolbox()
-    pop = toolbox.population(n=20)
+    pop = toolbox.population(n=1000)
 
     # Collect statistics as the EA runs
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -82,9 +82,9 @@ def evolve():
     # (See: http://deap.gel.ulaval.ca/doc/dev/api/algo.html for details)
     pop, log = algorithms.eaSimple(pop,
                                    toolbox,
-                                   cxpb=0.5,    # Prob. of crossover (mating)
-                                   mutpb=0.2,   # Probability of mutation
-                                   ngen=5,
+                                   cxpb=0.01,    # Prob. of crossover (mating)
+                                   mutpb=0.01,   # Probability of mutation
+                                   ngen=100,
                                    halloffame = hof,    # Num. of generations to run
                                    stats=stats)
 
