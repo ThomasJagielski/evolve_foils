@@ -113,7 +113,7 @@ class Individual(list):
         # for i in range(50):
         #     self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
         def point(t,a,b,c,d,e,n):
-            point = 5*.16*t*(a*(n*2)**1/2+b*(n*2)+c*(n*2)**2+d*(n*2)**3+e*(n*2)**4)
+            point = 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
             return point
         for i in range(50):
             
