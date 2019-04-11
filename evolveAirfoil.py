@@ -68,7 +68,7 @@ def evolve():
 
     # Get a configured toolbox and create a population of random Messages
     toolbox = get_toolbox()
-    pop = toolbox.population(n=1000)
+    pop = toolbox.population(n=500)
 
     # Collect statistics as the EA runs
     stats = tools.Statistics(lambda ind: ind.fitness.values)

@@ -322,7 +322,7 @@ def evaluate_foil(indiv):
     except (ValueError, ZeroDivisionError):
         result = 100
     
-    if result > 100 or float(cd) <.0013 :
+    if float(cl) > 1 or float(cd) <.0005 :
         result = 0
     print(result)
     return (result,)

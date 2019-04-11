@@ -14,7 +14,7 @@ do
 
 	echo $file'.analysis' >> xfoil.com
 	echo "" >> xfoil.com
-	echo "alfa 2.5" >> xfoil.com
+	echo "alfa 5" >> xfoil.com
 	echo "pacc" >> xfoil.com	
 	echo "" >> xfoil.com
 	echo "quit" >> xfoil.com
