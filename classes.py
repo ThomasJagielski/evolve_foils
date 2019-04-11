@@ -20,7 +20,7 @@ class FitnessMinimizeSingle(base.Fitness):
     Class representing the fitness of a given individual, with a single
     objective that we want to maximize (weight = 1)
     """
-    weights = (-1.0,)
+    weights = (1.0,)
 
 
 class Individual(list):
@@ -112,15 +112,48 @@ class Individual(list):
         #     return point
         # for i in range(50):
         #     self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
+
+        '''
+        For NACA 0016:
         def point(t,a,b,c,d,e,n):
             point = 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
             return point
         for i in range(50):
-            
-            self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
 
-            print(X_COORD[i])
-            print(self[-1])
+            point = point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i])
+            point = abs(point)
+            self.append(point)
+        '''
+        # a = random.uniform(-.5,.5)
+        # b = random.uniform(-.5,.5)
+        # c = random.uniform(-.5,.5)
+        # d = random.uniform(-.5,.5)
+        # e = random.uniform(-.5,.5)
+
+        a = random.uniform(0,.5)
+        b = random.uniform(-.5,0)
+        c = random.uniform(-.5,0)
+        d = random.uniform(0,.5)
+        e = random.uniform(-.5,0)
+
+        a = round(a,4)
+        b = round(b,4)
+        c = round(c,4)
+        d = round(d,4)
+        e = round(e,4)
+        print(a)
+
+        def point(t,a,b,c,d,e,n):
+            point = 5*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
+            return point
+        for i in range(50):
+
+            y_coord = point(.16,a,b,c,d,e,X_COORD[i])
+            if y_coord <= .01:
+                y_coord = .01
+            self.append(y_coord)
+
+
         # def point(a,n):
         #     point = -a*(n-25)**2+.15
         #     return point
@@ -282,12 +315,16 @@ def evaluate_foil(indiv):
     
     # Save the data to sample16-2.dat
     cl,cd = evaluateFoil.call_xfoil()
-    print(cd)
+
     try:
         # result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
-        result = abs(float(cd))
+        result = abs(float(cl)/float(cd))
     except (ValueError, ZeroDivisionError):
         result = 100
+    
+    if result > 100 or float(cd) <.0013 :
+        result = 0
+    print(result)
     return (result,)
 
 
