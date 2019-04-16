@@ -136,22 +136,27 @@ class Individual(list):
         d = random.uniform(0,.5)
         e = random.uniform(-.5,0)
 
-        a = round(a,4)
-        b = round(b,4)
-        c = round(c,4)
-        d = round(d,4)
-        e = round(e,4)
-        print(a)
+        # a = round(a,4)
+        # b = round(b,4)
+        # c = round(c,4)
+        # d = round(d,4)
+        # e = round(e,4)
+        # print(a)
 
-        def point(t,a,b,c,d,e,n):
-            point = 5*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
-            return point
-        for i in range(50):
 
-            y_coord = point(.16,a,b,c,d,e,X_COORD[i])
-            if y_coord <= .01:
-                y_coord = .01
-            self.append(y_coord)
+        
+        self.append(round(a,4))
+        self.append(round(b,4))
+        self.append(round(c,4))
+        self.append(round(d,4))
+        self.append(round(e,4))
+
+        # for i in range(50):
+
+        #     y_coord = point(.16,a,b,c,d,e,X_COORD[i])
+        #     if y_coord <= .01:
+        #         y_coord = .01
+        #     self.append(y_coord)
 
 
         # def point(a,n):
@@ -266,22 +271,23 @@ def mutate(indiv):
     Returns a mutated individual as a list
     """
     
-    op = int(random.randint(0,51)/100)
-    pb = int(random.randint(0,101)/100)
-    co = int(random.randint(0,101)/100)
+    # op = int(random.randint(0,51)/100)
+    # pb = int(random.randint(0,101)/100)
+    # co = int(random.randint(0,101)/100)
     
    
-    r1 = random.randint(0,1)
-    if r1 == 0:
-        indiv[co] += op
-        if indiv[co] > 0.51:
-            indiv[co] = 0.51
-    else:
-        indiv[co] -= op
-        if indiv[co] < 0.01:
-            indiv[co] = 0.01 
-    return (indiv,)
-
+    # r1 = random.randint(0,1)
+    # if r1 == 0:
+    #     indiv[co] += op
+    #     if indiv[co] > 0.51:
+    #         indiv[co] = 0.51
+    # else:
+    #     indiv[co] -= op
+    #     if indiv[co] < 0.01:
+    #         indiv[co] = 0.01 
+    # return (indiv,)
+    
+    
 
 
 def evaluate_foil(indiv):
@@ -294,17 +300,45 @@ def evaluate_foil(indiv):
     Returns a single length tuple object as the result
     """
 
+
+    def point(t,a,b,c,d,e,n):
+        point = 5*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
+        return point
+
+    
+    indiv_y = []
+
+    a = indiv[0]
+    b = indiv[1]
+    c = indiv[2]
+    d = indiv[3]
+    e = indiv[4]
+
+
+
+
     for i in range(50):
-        indiv[i] = round(indiv[i],6)
+
+        y_coord = point(.16,a,b,c,d,e,X_COORD[i])
+        if y_coord <= .01:
+            y_coord = .01
+        indiv_y.append(y_coord)
+    
+
+
+
+
+    for i in range(50):
+        indiv_y[i] = round(indiv_y[i],6)
     
     full_string = ''
     for j in range(len(X_COORD)):
         if j == 0 or j == len(X_COORD)-1 or j == 49:
             full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(0) + '\n')
         elif j <= 48:
-            full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv[j]) + '\n')
+            full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv_y[j]) + '\n')
         elif j > 48:
-            full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv[len(X_COORD)-j-1]) + '\n')
+            full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
     
     file = open('sample16-2.dat','w')
 
