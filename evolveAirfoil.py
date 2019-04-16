@@ -47,8 +47,8 @@ def get_toolbox():
     # Genetic operators
     toolbox.register("evaluate", classes.evaluate_foil)
     # toolbox.register("mate", tools.cxTwoPoint)
-    toolbox.register("mate", tools.cxOnePoint)
-    toolbox.register("mutate", classes.mutate)
+    toolbox.register("mate", tools.cxTwoPoint)
+    toolbox.register("mutate", classes.mutate, prob_add = .5, prob_sub = .5)
     toolbox.register("select", tools.selTournament, tournsize=3)
 
     # NOTE: You can also pass function arguments as you define aliases, e.g.
@@ -68,7 +68,7 @@ def evolve():
 
     # Get a configured toolbox and create a population of random Messages
     toolbox = get_toolbox()
-    pop = toolbox.population(n=500)
+    pop = toolbox.population(n=100)
 
     # Collect statistics as the EA runs
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -82,9 +82,9 @@ def evolve():
     # (See: http://deap.gel.ulaval.ca/doc/dev/api/algo.html for details)
     pop, log = algorithms.eaSimple(pop,
                                    toolbox,
-                                   cxpb=0.01,    # Prob. of crossover (mating)
-                                   mutpb=0.01,   # Probability of mutation
-                                   ngen=100,
+                                   cxpb=0.05,    # Prob. of crossover (mating)
+                                   mutpb=0.05,   # Probability of mutation
+                                   ngen=10,
                                    halloffame = hof,    # Num. of generations to run
                                    stats=stats)
 

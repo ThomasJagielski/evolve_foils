@@ -32,7 +32,7 @@ def call_xfoil():
 
         try:
             return data[2], data[4]  # 4 for non visc 3 for visc
-        except IndexError:
+        except (IndexError, TypeError):
             pass
 
 
