@@ -8,12 +8,14 @@ from deap import base
 from deap import tools
 
 import evaluateFoil
+import createCosineSpacing
 
-X_COORD = np.linspace(1,0,50).tolist()
-X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
-for i in range(len(X_COORD)):
-    X_COORD[i] = round(X_COORD[i],6)
-# print(X_COORD)
+# X_COORD = np.linspace(1,0,50).tolist()
+# X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
+X_COORD = createCosineSpacing.create_x()
+# for i in range(len(X_COORD)):
+#     X_COORD[i] = round(X_COORD[i],6)
+
 
 class FitnessMinimizeSingle(base.Fitness):
     """
