@@ -173,28 +173,52 @@ def evaluate_foil(indiv):
 
 
 
-    for i in range(50):
+    # for i in range(50):
 
+    #     y_coord = point(.16,a,b,c,d,e,X_COORD[i])
+    #     if y_coord <= .01:
+    #         y_coord = .01
+    #     indiv_y.append(y_coord)
+    
+
+
+
+
+    # for i in range(50):
+    #     indiv_y[i] = round(indiv_y[i],6)
+    
+    # full_string = ''
+    # for j in range(len(X_COORD)):
+    #     if j == 0 or j == len(X_COORD)-1 or j == 49:
+    #         full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(0) + '\n')
+    #     elif j <= 48:
+    #         full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv_y[j]) + '\n')
+    #     elif j > 48:
+    #         full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
+
+
+    for i in range(int(len(X_COORD)/2)):
         y_coord = point(.16,a,b,c,d,e,X_COORD[i])
         if y_coord <= .01:
             y_coord = .01
         indiv_y.append(y_coord)
+
+    print(int(len(X_COORD)/2))
     
-
-
-
-
-    for i in range(50):
+    for i in range(int(len(X_COORD)/2)):
         indiv_y[i] = round(indiv_y[i],6)
     
+
+
     full_string = ''
     for j in range(len(X_COORD)):
-        if j == 0 or j == len(X_COORD)-1 or j == 49:
-            full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(0) + '\n')
-        elif j <= 48:
+
+        if j < len(X_COORD)/2:
             full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv_y[j]) + '\n')
-        elif j > 48:
+        else:
             full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
+
+    
     
     file = open('sample16-2.dat','w')
 
