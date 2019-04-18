@@ -80,10 +80,20 @@ def evolve():
 
     # Run simple EA
     # (See: http://deap.gel.ulaval.ca/doc/dev/api/algo.html for details)
-    pop, log = algorithms.eaSimple(pop,
+    # pop, log = algorithms.eaSimple(pop,
+    #                                toolbox,
+    #                                cxpb=0.05,    # Prob. of crossover (mating)
+    #                                mutpb=0.05,   # Probability of mutation
+    #                                ngen=10,
+    #                                halloffame = hof,    # Num. of generations to run
+    #                                stats=stats)
+
+    pop, log = algorithms.eaMuPlusLambda(pop,
                                    toolbox,
                                    cxpb=0.05,    # Prob. of crossover (mating)
                                    mutpb=0.05,   # Probability of mutation
+                                   mu=1000,
+                                   lambda_=500,
                                    ngen=10,
                                    halloffame = hof,    # Num. of generations to run
                                    stats=stats)
