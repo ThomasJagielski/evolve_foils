@@ -16,6 +16,6 @@ def create_x():
     for i in range(2,len(text)-1,2):
         new_text.append(float(text[i]))
 
-    new_text = new_text[1:]
+    new_text = new_text[:-1]
 
     return(new_text)

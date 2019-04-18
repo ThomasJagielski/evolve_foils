@@ -62,7 +62,7 @@ class Individual(list):
             self.append(point)
         '''
 
-        a = random.uniform(0,.5)
+        a = random.uniform(0.1,.5)
         b = random.uniform(-.5,0)
         c = random.uniform(-.5,0)
         d = random.uniform(0,.5)
@@ -95,7 +95,7 @@ def mutate(indiv, prob_add, prob_sub):
 
     Returns a mutated individual as a list
     """
-
+    index = random.randint(0,4)
     # Shows which coefficients must be positive/negative
     # 1 is positive
     # 0 is negative
@@ -109,7 +109,6 @@ def mutate(indiv, prob_add, prob_sub):
     mut = random.uniform(0,0.5)
     
     if random.uniform(0,1) < prob_add:
-        index = random.randint(0,4)
         indiv[index] += mut
 
         # Ensure the value is the correct sign
@@ -125,7 +124,6 @@ def mutate(indiv, prob_add, prob_sub):
             indiv[index] = -neg_max
         
     if random.uniform(0,1) < prob_sub:
-        index = random.randint(0,4)
         indiv[index] -= mut
 
         # Ensure the value is the correct sign
@@ -139,6 +137,9 @@ def mutate(indiv, prob_add, prob_sub):
             indiv[index] = pos_max
         if indiv[index] < -neg_max:
             indiv[index] = -neg_max
+
+    if index == 0 and indiv[index] < 0.1:
+        indiv[index] = 0.1
 
     return (indiv,)
     
