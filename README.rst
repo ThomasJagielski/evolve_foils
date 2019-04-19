@@ -5,10 +5,6 @@
 Evolving Hydrofoils is an application of Evolutionary Algorithms offered in the DEAP to evolve hydrofoils, analysed on the basis of the ratio of Coefficient of Drag (Cd) with Coefficient of Lift (Cl). The physical quantities are determined using  a FORTRAN based script, XFOIL, a subsonic airfoil development system. This is the final project whcih was developed by the authors during Software Design, a class at Olin College of Engineering.
 
 ============
-
-Evolving Hydrofoils
-
-============
 Evolving Hydrofoils Version 1.0 requires the following Python packages
 
 A. classes.py
