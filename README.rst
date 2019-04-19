@@ -112,7 +112,7 @@ https://web.mit.edu/drela/Public/web/xfoil/
 
 Authors
 ======
-Colin Snow - , Olin College
+Colin Snow - Electrical and Computer Engineer, Olin College
 
 Sparsh Bansal - Electrical and Computer Engineer, Olin College
 
