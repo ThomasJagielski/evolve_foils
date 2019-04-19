@@ -1,22 +1,60 @@
-:Name: Touchless Piano - Interactive Visualization, Software Design
-:Authors: Sparsh Bansal, Lee Smith
-:Version: 2.0
+:Name: Evolving Hydrofoils using DEAP - Software Design, Olin College
+:Authors: Colin Snow, Sparsh Bansal, Thomas Jagielski
+:Version: 1.0
 
-The Touchless Piano is an Interactive Visualization project in Software Design at Olin College of Engineering.
+Evolving Hydrofoils is an application of Evolutionary Algorithms offered in the DEAP to evolve hydrofoils, analysed on the basis of the ratio of Coefficient of Drag (Cd) with Coefficient of Lift (Cl). The physical quantities are determined using  a FORTRAN based script, XFOIL, a subsonic airfoil development system. This is the final project whcih was developed by the authors during Software Design, a class at Olin College of Engineering.
 
-Requirements
 ============
 
-Interactive Visualization Version 2.0 requires the following Python packages
+Evolving Hydrofoils Version 1.0 requires the following Python packages
+
+A. classes.py
 
 .. code-block:: python
+    import random
+    import string
+    import sys
+    import numpy as np   # Used for statistics
+    from deap import algorithms
+    from deap import base
+    from deap import tools
+ 
+B. editAirfoil.py
 
-    import cv2
+.. code-block:: python
+    import subprocess as sp
+    import shutil
+    import sys
+    import string
+    import time
+    import pandas as pd
+    import os
+    import evaluateFoil
+    import random
     import numpy as np
-    import music21
-    import * from music21
 
-A MIDI player is also required. All testing used the timidity MIDI player.
+C. evaluateFoil.py
+
+.. code-block:: python
+    import subprocess as sp
+    import shutil
+    import sys
+    import string
+    import time
+    import pandas as pd
+    import os
+
+D. evolveAirfoil.py
+
+.. code-block:: python
+    import random
+    import string
+    import sys
+    import numpy    # Used for statistics
+    from deap import algorithms
+    from deap import base
+    from deap import tools
+    import classes
 
 Installation
 ============
