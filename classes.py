@@ -178,13 +178,10 @@ def evaluate_foil(indiv):
     e = indiv[4]
 
 
-<<<<<<< HEAD
-    for i in range(50):
-=======
+
 
 
     # for i in range(50):
->>>>>>> ff20daa66add4afb6c37f09f0e34aa3bf71e5659
 
     #     y_coord = point(.16,a,b,c,d,e,X_COORD[i])
     #     if y_coord <= .01:
@@ -192,12 +189,8 @@ def evaluate_foil(indiv):
     #     indiv_y.append(y_coord)
     
 
-<<<<<<< HEAD
-    for i in range(50):
-        indiv_y[i] = round(indiv_y[i],6)
     
     # Convert the x and y coordinates to strings
-=======
 
 
 
@@ -227,7 +220,6 @@ def evaluate_foil(indiv):
     
 
 
->>>>>>> ff20daa66add4afb6c37f09f0e34aa3bf71e5659
     full_string = ''
     for j in range(len(X_COORD)):
 
