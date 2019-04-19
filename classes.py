@@ -213,7 +213,6 @@ def evaluate_foil(indiv):
             y_coord = .01
         indiv_y.append(y_coord)
 
-    print(int(len(X_COORD)/2))
     
     for i in range(int(len(X_COORD)/2)):
         indiv_y[i] = round(indiv_y[i],6)
