@@ -6,6 +6,9 @@ Evolving Hydrofoils is an application of Evolutionary Algorithms offered in the 
 
 ============
 
+Evolving Hydrofoils
+
+============
 Evolving Hydrofoils Version 1.0 requires the following Python packages
 
 A. classes.py
