@@ -2,13 +2,14 @@
 :Authors: Colin Snow, Sparsh Bansal, Thomas Jagielski
 :Version: 1.0
 
+===== 
+Evolving Hydrofoils
+===== 
+
 Evolving Hydrofoils is an application of Evolutionary Algorithms offered in the DEAP to evolve hydrofoils, analysed on the basis of the ratio of Coefficient of Drag (Cd) with Coefficient of Lift (Cl). The physical quantities are determined using  a FORTRAN based script, XFOIL, a subsonic airfoil development system. This is the final project whcih was developed by the authors during Software Design, a class at Olin College of Engineering.
 
 ============
-<<<<<<< HEAD
 
-=======
->>>>>>> 178299c04cc1aa18d15df6c4d769e05489b86d4d
 Evolving Hydrofoils Version 1.0 requires the following Python packages
 
 A. classes.py
