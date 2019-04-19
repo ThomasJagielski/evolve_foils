@@ -1,3 +1,6 @@
+"""
+Isolate the coefficient of drag and coefficient of lift from the results of the xfoil simulation
+"""
 import subprocess as sp
 import shutil
 import sys
@@ -9,15 +12,14 @@ import evaluateFoil
 import random
 import numpy as np
 
-
-data = evaluateFoil.open_csv('sample16.dat')
+data = evaluateFoil.open_csv('sample16.dat') # Open the results file
 
 # print(data.index)
 
 # print(data.iloc[0,0])
 
 for i in data.index[20:-20]:
-
+    # Split the results by row
     row = data.iloc[i,0]
     row = row.split(' ')
     # print(row)

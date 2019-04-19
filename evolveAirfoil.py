@@ -3,6 +3,10 @@
 Uses the DEAP (Distributed Evolutionary Algorithms in Python) framework,
 http://deap.readthedocs.org
 
+Most of this code is from the Evolutionary Algorithms Toolbox.
+For testing purposes, we are using the DEAP package and the code from the toolbox.
+We are working on writing our own evolutionary algorithm, but started with this for testing purposes.
+
 """
 
 import random

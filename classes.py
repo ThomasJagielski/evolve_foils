@@ -1,3 +1,9 @@
+"""
+File for definitition of the fitness function, Individual class, ViewIndividual class, Mutate, Evaluate, and Mate functions
+
+These are functions used in the evolutionary algorithm.
+"""
+
 import random
 import string
 import sys
@@ -12,7 +18,8 @@ import createCosineSpacing
 
 # X_COORD = np.linspace(1,0,50).tolist()
 # X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
-X_COORD = createCosineSpacing.create_x()
+X_COORD = createCosineSpacing.create_x() # Implement cosine spacing in order to define the front and back of the hydrofoils better
+                                         # This is useful for a higher success rate with xfoil
 # for i in range(len(X_COORD)):
 #     X_COORD[i] = round(X_COORD[i],6)
 
@@ -33,11 +40,8 @@ class Individual(list):
     """
     
     def __init__(self):
-        """Create a new Message individual.
-
-        If starting_string is given, initialize the Message with the
-        provided string message. Otherwise, initialize to a random string
-        message with length between min_length and max_length.
+        """
+        Create a new foil using the NACA airfoils function definition
         """
     # Want to minimize a single objective: distance from the goal message
         self.fitness = FitnessMinimizeSingle()
@@ -62,17 +66,20 @@ class Individual(list):
             self.append(point)
         '''
 
-        a = random.uniform(0.1,.5)
-        b = random.uniform(-.5,0)
-        c = random.uniform(-.5,0)
-        d = random.uniform(0,.5)
-        e = random.uniform(-.5,0)
+        # NACA Airfoil function:
+        # 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
+
+        a = random.uniform(0.1,.5) # Define the 'a' coefficient for the NACA airfoil function
+        b = random.uniform(-.5,0) # Define the 'b' coefficient for the NACA airfoil function
+        c = random.uniform(-.5,0) # Define the 'c' coefficient for the NACA airfoil function
+        d = random.uniform(0,.5) # Define the 'd' coefficient for the NACA airfoil function
+        e = random.uniform(-.5,0) # Define the 'e' coefficient for the NACA airfoil function
         
-        self.append(round(a,4))
-        self.append(round(b,4))
-        self.append(round(c,4))
-        self.append(round(d,4))
-        self.append(round(e,4))
+        self.append(round(a,4)) # Round 'a' to the nearest 4 decimals for quicker computations
+        self.append(round(b,4)) # Round 'b' to the nearest 4 decimals for quicker computations
+        self.append(round(c,4)) # Round 'c' to the nearest 4 decimals for quicker computations
+        self.append(round(d,4)) # Round 'd' to the nearest 4 decimals for quicker computations
+        self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
 
 class ViewIndividual(list):
     
@@ -95,12 +102,12 @@ def mutate(indiv, prob_add, prob_sub):
 
     Returns a mutated individual as a list
     """
-    index = random.randint(0,4)
+    index = random.randint(0,4) # Choose a random index (coefficient) for mutating (a, b, c, d, or e)
     # Shows which coefficients must be positive/negative
     # 1 is positive
     # 0 is negative
-    # The indicies coorespond to the coefficients a, b, c, d, and e respectively
-    pos_neg_coeff = [1,0,0,1,0]
+    pos_neg_coeff = [1,0,0,1,0] # The indicies coorespond to the coefficients a, b, c, d, and e respectively
+
     # Set the bounds for possible coefficients
     pos_max = 0.5
     neg_max = -0.5
@@ -138,6 +145,7 @@ def mutate(indiv, prob_add, prob_sub):
         if indiv[index] < -neg_max:
             indiv[index] = -neg_max
 
+    # Ensure that 'a' is greater than 0.1 to eliminate the 'pencil' hydrofoil cases
     if index == 0 and indiv[index] < 0.1:
         indiv[index] = 0.1
 
@@ -156,7 +164,6 @@ def evaluate_foil(indiv):
     Returns a single length tuple object as the result
     """
 
-
     def point(t,a,b,c,d,e,n):
         point = 5*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
         return point
@@ -171,8 +178,6 @@ def evaluate_foil(indiv):
     e = indiv[4]
 
 
-
-
     for i in range(50):
 
         y_coord = point(.16,a,b,c,d,e,X_COORD[i])
@@ -181,12 +186,10 @@ def evaluate_foil(indiv):
         indiv_y.append(y_coord)
     
 
-
-
-
     for i in range(50):
         indiv_y[i] = round(indiv_y[i],6)
     
+    # Convert the x and y coordinates to strings
     full_string = ''
     for j in range(len(X_COORD)):
         if j == 0 or j == len(X_COORD)-1 or j == 49:
@@ -196,6 +199,8 @@ def evaluate_foil(indiv):
         elif j > 48:
             full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
     
+    # Write the x and y coordinates to a text file with two columns
+    # The left column as the x and the right column as the y
     file = open('sample16-2.dat','w')
 
     file.write(full_string)
@@ -204,7 +209,8 @@ def evaluate_foil(indiv):
     
     
     # Save the data to sample16-2.dat
-
+    # Ensure the foil converged and works with xfoil
+    # If it does not, assign a fitness score of zero to this foil
     try:
         cl,cd = evaluateFoil.call_xfoil()
     except TypeError:

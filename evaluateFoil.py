@@ -8,26 +8,33 @@ import os
 
 
 def open_csv(file):
+    """Function to open a csv file with the name passed into the function"""
     return pd.read_csv(file)
 
 def save_csv(data):
+    """Function to dump the xfoil results into a csv"""
     data.to_csv('sample16-2.dat', index=False)
 
 
 def call_xfoil():
-
+    """
+    Call xfoil using the bash script in 'runx.sh' to evaluate each foil
+    """
+    # Call xfoil using bash script
     sp.call(['./runx.sh'])
-
+    # Open results.txt for file dump
     file = open('results.txt',"r")
-
+    # read the results.txt file
     data = file.read()
     file.close()
     # open('results.txt', 'w').close()
+    # Split the results from xfoil
     data = data.split('-----')
 
     data = data[-1]
     data = data.split('  ')
 
+    # Try to run the xfoil simulation multiple times if it does not work for a given foil
     for i in range (10):  # Number of time to try the solver before giving up
 
         try:
