@@ -11,6 +11,7 @@ Evolving Hydrofoils Version 1.0 requires the following Python packages
 A. classes.py
 
 .. code-block:: python
+
     import random
     import string
     import sys
@@ -18,10 +19,13 @@ A. classes.py
     from deap import algorithms
     from deap import base
     from deap import tools
- 
+    
+============    
+
 B. editAirfoil.py
 
 .. code-block:: python
+
     import subprocess as sp
     import shutil
     import sys
@@ -32,10 +36,13 @@ B. editAirfoil.py
     import evaluateFoil
     import random
     import numpy as np
+    
+============
 
 C. evaluateFoil.py
 
 .. code-block:: python
+
     import subprocess as sp
     import shutil
     import sys
@@ -44,9 +51,12 @@ C. evaluateFoil.py
     import pandas as pd
     import os
 
+============
+
 D. evolveAirfoil.py
 
 .. code-block:: python
+
     import random
     import string
     import sys
