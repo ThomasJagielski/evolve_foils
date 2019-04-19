@@ -43,7 +43,7 @@ for i in data.index[20:-20]:
 
     # number1 = 
 
-    data.iloc[i,0] ='  ' + str(x_coord) + ' ' + str(number2+float(y_coord))
+    data.iloc[i,0] = '  ' + str(x_coord) + ' ' + str(number2 + float(y_coord))
 
 
 

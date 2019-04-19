@@ -27,7 +27,7 @@ def call_xfoil():
     # read the results.txt file
     data = file.read()
     file.close()
-    # open('results.txt', 'w').close()
+
     # Split the results from xfoil
     data = data.split('-----')
 
@@ -35,12 +35,19 @@ def call_xfoil():
     data = data.split('  ')
 
     # Try to run the xfoil simulation multiple times if it does not work for a given foil
-    for i in range (10):  # Number of time to try the solver before giving up
+    # for i in range (10):  # Number of time to try the solver before giving up
 
-        try:
-            return data[2], data[4]  # 4 for non visc 3 for visc
-        except (IndexError, TypeError):
-            pass
+    #     try:
+    #         return data[2], data[3]  # 4 for non visc 3 for visc
+    #     except (IndexError, TypeError):
+    #         pass
+
+
+
+    try:
+        return data[2], data[3]  # 4 for non visc 3 for visc
+    except (IndexError, TypeError):
+        pass
 
 
 

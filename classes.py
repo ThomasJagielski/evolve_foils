@@ -15,6 +15,7 @@ from deap import tools
 
 import evaluateFoil
 import createCosineSpacing
+import pydoc
 
 # X_COORD = np.linspace(1,0,50).tolist()
 # X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
@@ -82,8 +83,11 @@ class Individual(list):
         self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
 
 class ViewIndividual(list):
-    
+    """
+    When we finish the program, save the best airfoil so we can view it later
 
+    TODO: Fix tis to work with the new definition of airfoils.
+    """
     def __init__(self, data):
         
         for i in range(len(data)):
@@ -163,7 +167,7 @@ def evaluate_foil(indiv):
 
     Returns a single length tuple object as the result
     """
-
+    # Using the functional definition, find all of the points to define the foil
     def point(t,a,b,c,d,e,n):
         point = 5*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
         return point
@@ -171,54 +175,28 @@ def evaluate_foil(indiv):
     
     indiv_y = []
 
-    a = indiv[0]
-    b = indiv[1]
-    c = indiv[2]
-    d = indiv[3]
-    e = indiv[4]
+    a = indiv[0] # set 'a' from indiv equal to 'a' for ease of variable use 
+    b = indiv[1] # set 'b' from indiv equal to 'b' for ease of variable use 
+    c = indiv[2] # set 'c' from indiv equal to 'c' for ease of variable use 
+    d = indiv[3] # set 'd' from indiv equal to 'd' for ease of variable use 
+    e = indiv[4] # set 'e' from indiv equal to 'e' for ease of variable use 
 
-
-
-
-
-    # for i in range(50):
-
-    #     y_coord = point(.16,a,b,c,d,e,X_COORD[i])
-    #     if y_coord <= .01:
-    #         y_coord = .01
-    #     indiv_y.append(y_coord)
-    
-
-    
-    # Convert the x and y coordinates to strings
-
-
-
-    # for i in range(50):
-    #     indiv_y[i] = round(indiv_y[i],6)
-    
-    # full_string = ''
-    # for j in range(len(X_COORD)):
-    #     if j == 0 or j == len(X_COORD)-1 or j == 49:
-    #         full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(0) + '\n')
-    #     elif j <= 48:
-    #         full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv_y[j]) + '\n')
-    #     elif j > 48:
-    #         full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
-
-
+    # Create the y coordinates with point
     for i in range(int(len(X_COORD)/2)):
         y_coord = point(.16,a,b,c,d,e,X_COORD[i])
+        
+        # Set a minimum value for the airfoil to prevent it from intersecting
         if y_coord <= .01:
             y_coord = .01
+            
         indiv_y.append(y_coord)
 
-    
+    # Round the coordinates to the nearest 6 decimal places to expedite the computation
     for i in range(int(len(X_COORD)/2)):
         indiv_y[i] = round(indiv_y[i],6)
     
-
-
+    
+    # Convert each of the numeric coordinates to a string of x and y
     full_string = ''
     for j in range(len(X_COORD)):
 
@@ -243,27 +221,29 @@ def evaluate_foil(indiv):
     # If it does not, assign a fitness score of zero to this foil
     try:
         cl,cd = evaluateFoil.call_xfoil()
-    except TypeError:
+    except TypeError:                       # Throws type error when xfoil encounters a fortran arithmetic operation error
         result = 0
         return(result,)
 
     try:
         # result = abs(float(cl))/abs(float(cd))  # Fitness evaluation, could consider another option
         result = abs(float(cl)/float(cd))
-    except (ValueError, ZeroDivisionError):
-        result = 100
-    
+    except (ValueError, ZeroDivisionError):  # Throws value error when one of the values is too high to be recorded properly (> ~ 1000) 
+                                            #and zero division error when there is no drag ie. it did not work properly        result = 0
+        result = 0
+        return(result,)
     try:
         if float(cl) > 1 or float(cd) <.0005 :
             result = 0
         # print(result)
         return (result,)
-    except ValueError:  # Error occurs when xfoil returns a malformatted string because the value is either too high or does nto exist
+    except ValueError:  # Error occurs when xfoil returns a malformatted string because the value is either too high or does not exist
         return(0,)
 
 
 #CONSIDER USING DEAP 
 def mate(indiv, matpb):
+    # TODO: Write and implement this function
     pass
 
 if __name__ == "__main__":
