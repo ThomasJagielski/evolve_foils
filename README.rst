@@ -73,27 +73,15 @@ The easiest and fastest way to get the packages up and running:
 
 .. code-block:: python
 
-    sudo apt-get install python-opencv
-    sudo apt-get install python-numpy python-scipy python-matplotlib ipython ipython-notebook python-pandas python-sympy python-noseimport requests
-
-In order to install timidity, input the following on the command line:
-    sudo apt-get install timidity
-
-In order for the player to work, the envrionment must be set. The base location is included in the code. If your MIDI player is in a different location, it must be updated for this code to function.
-
-Set location:
-     environment.set('midiPath', '/path/location/')
-Default location:
-     'usr/bin/timidity' 
-  
+    pip install deap
+    sudo apt install xfoil
+    
 Documentation
 =============
 
 We have added comments for every line of code that we felt could be beneficial for someone to understand the program
 
-Note: We haved added comments especially on the imported packages and code so that we can fully understand the code written by someone else. We have cited the sources wherever appropriate. 
-
-More documentation can be found in the file documentation.txt
+Note: We haved added comments especially on the imported packages and code so that we can fully understand the code written by someone else. We have cited the sources wherever appropriate.
 
 Contributing Works
 ==================
@@ -102,16 +90,35 @@ We used information from:
 
 :i: Think Python - Allen Downey
 
-:ii: SciPy.org
+:ii: Evolutionary Algorithms Toolbox - Software Design
 
-:iii: OpenCV
+:iii: DEAP - Computer Vision and Systems Laboratory, Université Laval
 
-:iiii: User's Guide, music21 (MIT)
+:iiii: XFOIL - Mark Drela, Massachusetts Institute of Technology
 
-Source URLs:
+Built With
 ======
 Think Python:
 https://www.greenteapress.com/thinkpython/thinkpython.pdf
 
-Music21:
-https://web.mit.edu/music21/doc/usersGuide/index.html
+Evolutionary Algorithms Toolbox:
+https://sd19spring.github.io/toolboxes/evolutionary-algorithms
+
+Distributed Evolutionary Algorithms in Python:
+https://github.com/deap/deap
+
+XFOIL:
+https://web.mit.edu/drela/Public/web/xfoil/
+
+Authors
+======
+Colin Snow - , Olin College
+
+Sparsh Bansal - Electrical and Computer Engineer, Olin College
+
+Thomas Jagielski - Electrical and Computer Engineer, Olin College
+
+Acknowledgments
+======
+
+We acknowledge all the guidance and remarks from the Software Design teaching team, as well as all our classmates for the peer reviews and helpful suggestions and recommendtaions.
