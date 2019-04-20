@@ -90,9 +90,18 @@ class ViewIndividual(list):
     """
     def __init__(self, data):
         
-        for i in range(len(data)):
-            self.append(data[i])  # Assume that height shiould not be more than 2 times length
-            # self.append(.1)
+        a = data[0] # set 'a' from indiv equal to 'a' for ease of variable use 
+        b = data[1] # set 'b' from indiv equal to 'b' for ease of variable use 
+        c = data[2] # set 'c' from indiv equal to 'c' for ease of variable use 
+        d = data[3] # set 'd' from indiv equal to 'd' for ease of variable use 
+        e = data[4] # set 'e' from indiv equal to 'e' for ease of variable use 
+
+
+        self.append(round(a,4)) # Round 'a' to the nearest 4 decimals for quicker computations
+        self.append(round(b,4)) # Round 'b' to the nearest 4 decimals for quicker computations
+        self.append(round(c,4)) # Round 'c' to the nearest 4 decimals for quicker computations
+        self.append(round(d,4)) # Round 'd' to the nearest 4 decimals for quicker computations
+        self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
 
 def mutate(indiv, prob_add, prob_sub):
     """
@@ -186,8 +195,8 @@ def evaluate_foil(indiv):
         y_coord = point(.16,a,b,c,d,e,X_COORD[i])
         
         # Set a minimum value for the airfoil to prevent it from intersecting
-        if y_coord <= .01:
-            y_coord = .01
+        if y_coord <= .001:
+            y_coord = .001
             
         indiv_y.append(y_coord)
 
@@ -233,8 +242,8 @@ def evaluate_foil(indiv):
         result = 0
         return(result,)
     try:
-        if float(cl) > 1 or float(cd) <.0005 :
-            result = 0
+        # if float(cl) > 1 or float(cd) <.0005 :
+        #     result = 0
         # print(result)
         return (result,)
     except ValueError:  # Error occurs when xfoil returns a malformatted string because the value is either too high or does not exist

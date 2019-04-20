@@ -72,7 +72,7 @@ def evolve():
 
     # Get a configured toolbox and create a population of random Messages
     toolbox = get_toolbox()
-    pop = toolbox.population(n=100)
+    pop = toolbox.population(n=10)
 
     # Collect statistics as the EA runs
     stats = tools.Statistics(lambda ind: ind.fitness.values)
@@ -129,6 +129,6 @@ if __name__ == "__main__":
     # Run evolutionary algorithm
     pop, log, hof = evolve()
     print(hof)
-    best = classes.ViewIndividual(hof)
-    classes.evaluate_foil(best[0])
+    best = classes.ViewIndividual(hof[0])
+    print(classes.evaluate_foil(best))
 

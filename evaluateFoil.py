@@ -23,8 +23,8 @@ def call_xfoil():
     # Call xfoil using bash script
     try:
         sp.call(['./runx.sh'], timeout = 5)
-    except sp.TimeoutExpired:
-        pass
+    except sp.TimeoutExpired:    # If it takes more than 5 seconds, quit and return 0
+        return 0,100
     # Open results.txt for file dump
     file = open('results.txt',"r")
     # read the results.txt file
@@ -49,8 +49,8 @@ def call_xfoil():
 
     try:
         return data[2], data[3]  # 4 for non visc 3 for visc
-    except (IndexError, TypeError):
-        pass
+    except (IndexError, TypeError):  # If file is unreadable then simulation has failed so return 0
+        return 0,100
 
 
 
