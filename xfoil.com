@@ -7,7 +7,7 @@ visc 2e7
 pacc
 ./sample16-2.dat.analysis
 
-alfa 2.5
+aseq 0 10 4
 pacc
 
 quit

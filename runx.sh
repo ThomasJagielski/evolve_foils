@@ -18,7 +18,7 @@ do
 	#this is the only real dynamic line which we need
 	echo $file'.analysis' >> xfoil.com
 	echo "" >> xfoil.com
-	echo "alfa 2.5" >> xfoil.com
+	echo "aseq 0 10 4" >> xfoil.com
 	echo "pacc" >> xfoil.com	
 	echo "" >> xfoil.com
 	echo "quit" >> xfoil.com

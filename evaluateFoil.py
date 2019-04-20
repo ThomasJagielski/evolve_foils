@@ -37,6 +37,13 @@ def call_xfoil():
     data = data[-1]
     data = data.split('  ')
 
+
+
+
+
+    
+
+
     # Try to run the xfoil simulation multiple times if it does not work for a given foil
     # for i in range (10):  # Number of time to try the solver before giving up
 
@@ -48,7 +55,9 @@ def call_xfoil():
 
 
     try:
-        return data[2], data[3]  # 4 for non visc 3 for visc
+        cl = sum([float(data[2]) , float(data[10]) , float(data[18]) ,float(data[26])])
+        cd = sum([float(data[3]) , float(data[11]) , float(data[19]) ,float(data[27])])
+        return cl,cd  # 4 for non visc 3 for visc
     except (IndexError, TypeError):  # If file is unreadable then simulation has failed so return 0
         return 0,100
 
