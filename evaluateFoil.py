@@ -21,7 +21,10 @@ def call_xfoil():
     Call xfoil using the bash script in 'runx.sh' to evaluate each foil
     """
     # Call xfoil using bash script
-    sp.call(['./runx.sh'])
+    try:
+        sp.call(['./runx.sh'], timeout = 5)
+    except sp.TimeoutExpired:
+        pass
     # Open results.txt for file dump
     file = open('results.txt',"r")
     # read the results.txt file

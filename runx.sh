@@ -13,12 +13,12 @@ do
 	echo "pane" >> xfoil.com
 	echo "oper" >> xfoil.com
 	echo 'iter 1000' >> xfoil.com
-	echo "visc 7.5e5" >> xfoil.com
+	echo "visc 2e7" >> xfoil.com
 	echo "pacc" >> xfoil.com
 	#this is the only real dynamic line which we need
 	echo $file'.analysis' >> xfoil.com
 	echo "" >> xfoil.com
-	echo "alfa 5" >> xfoil.com
+	echo "alfa 2.5" >> xfoil.com
 	echo "pacc" >> xfoil.com	
 	echo "" >> xfoil.com
 	echo "quit" >> xfoil.com

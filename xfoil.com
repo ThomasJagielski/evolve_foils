@@ -3,11 +3,11 @@ load sample16-2.dat
 pane
 oper
 iter 1000
-visc 7.5e5
+visc 2e7
 pacc
 ./sample16-2.dat.analysis
 
-alfa 5
+alfa 2.5
 pacc
 
 quit
