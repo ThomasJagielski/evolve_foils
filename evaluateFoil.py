@@ -22,7 +22,7 @@ def call_xfoil():
     """
     # Call xfoil using bash script
     try:
-        sp.call(['./runx.sh'], timeout = 5)
+        sp.call(['./runx.sh'], timeout = 2)
     except sp.TimeoutExpired:    # If it takes more than 5 seconds, quit and return 0
         return 0,100
     # Open results.txt for file dump
@@ -58,7 +58,7 @@ def call_xfoil():
         cl = sum([float(data[2]) , float(data[10]) , float(data[18]) ,float(data[26])])
         cd = sum([float(data[3]) , float(data[11]) , float(data[19]) ,float(data[27])])
         return cl,cd  # 4 for non visc 3 for visc
-    except (IndexError, TypeError):  # If file is unreadable then simulation has failed so return 0
+    except (IndexError, TypeError, ValueError):  # If file is unreadable or returns a bad string then simulation has failed so return 0 
         return 0,100
 
 
