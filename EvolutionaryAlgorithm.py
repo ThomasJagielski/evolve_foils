@@ -17,8 +17,7 @@ def EvoAlgo(population, operators, mu, lambda_, cxpb, mutpb, ngen):
     cxpb - probability of an 
     """
     assert cxpb + mutpb <= 1.0
-    pass
-    
+
     # TODO: Finish Implementation
     if random.random() < mutpb:
         pass
