@@ -1,7 +1,23 @@
 import random
+import classes
+from collections import OrderedDict
 
 
 population = []
+
+def create_pop(num_indiv):
+    """
+    Function to create a population
+    """  
+    population = dict()
+    for i in range(num_indiv):
+        individual = classes.Individual()
+
+        population[tuple(individual)] = classes.evaluate_foil(individual)
+
+
+    
+    return population
 
 def TwoPointCrossover(parent1, parent2):
     """Function to mate two parent strings"""
@@ -13,7 +29,14 @@ def TwoPointCrossover(parent1, parent2):
             child2[i] = parent1[i]
     return (child1, child2)
 
-def EvoAlgo(population, operators, mu, lambda_, cxpb, mutpb, ngen):
+def selection(population,num_indiv):
+    """
+    population - dictionary with the keys as a list of coefficients and values of the fitness (coefficient of lift to drag)
+    """
+    sorted_population = sorted(population.items(), key=lambda v:v[1],reverse=True)
+    return sorted_population[0:num_indiv]
+
+def EvoAlgo(num_population, operators, mu, lambda_, cxpb, mutpb, ngen):
     """
     Evolutionary algorithm that returns the most fit individual
         -- Follows the input format of eaMuPlusLambda algorithm in the DEAP package --
@@ -23,17 +46,17 @@ def EvoAlgo(population, operators, mu, lambda_, cxpb, mutpb, ngen):
     population - list of individuals that form the first generation
     operators - list of operators depending on the type of evolutionary algorithm
     mu - number of individuals to be taken from nth generation to the (n+1)th generation
-    lambda_ - number of offsprings to be produced at each generation
-    cxpb - probability of an 
+    lambda_ - number of offs
     """
+
     assert cxpb + mutpb <= 1.0
 
     # TODO: Finish Implementation
-    if random.random() < mutpb:
-        pass
 
-    if random.random() < cxpb:
+    if random.Random()< mutpb:
+        pass
+    if random.Random()< cxpb:
         pass
 
 if __name__ == "__main__":
-    pass
+    selected = dict(selection(create_pop(10),2))

@@ -47,6 +47,9 @@ class Individual(list):
     # Want to minimize a single objective: distance from the goal message
         self.fitness = FitnessMinimizeSingle()
 
+
+        
+
         # Otherwise, select an initial length between min and max
         # and populate Message with that many random characters
         # def point(t,a,b,c,d,e,n):
@@ -66,6 +69,31 @@ class Individual(list):
             point = abs(point)
             self.append(point)
         '''
+
+        # NACA Airfoil function:
+        # 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
+
+        a = random.uniform(0.1,.5) # Define the 'a' coefficient for the NACA airfoil function
+        b = random.uniform(-.5,0) # Define the 'b' coefficient for the NACA airfoil function
+        c = random.uniform(-.5,0) # Define the 'c' coefficient for the NACA airfoil function
+        d = random.uniform(0,.5) # Define the 'd' coefficient for the NACA airfoil function
+        e = random.uniform(-.5,0) # Define the 'e' coefficient for the NACA airfoil function
+        
+        self.append(round(a,4)) # Round 'a' to the nearest 4 decimals for quicker computations
+        self.append(round(b,4)) # Round 'b' to the nearest 4 decimals for quicker computations
+        self.append(round(c,4)) # Round 'c' to the nearest 4 decimals for quicker computations
+        self.append(round(d,4)) # Round 'd' to the nearest 4 decimals for quicker computations
+        self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
+
+
+def TwoPointCrossover(parent1, parent2):
+    """Function to mate two parent strings"""
+    child1 = parent1
+    child2 = parent2
+    for i in range(min([len(parent1), len(parent2)])):
+        if bool(random.getrandbits(1)):
+            child1[i] = parent2[i]
+            child2[i] = parent1
 
         # NACA Airfoil function:
         # 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
