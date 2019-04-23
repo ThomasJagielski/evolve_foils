@@ -22,7 +22,7 @@ def call_xfoil():
     """
     # Call xfoil using bash script
     try:
-        sp.call(['./runx.sh'], timeout = 2)
+        sp.call(['./runx.sh'], timeout = 1)
     except sp.TimeoutExpired:    # If it takes more than 5 seconds, quit and return 0
         return 0,100
     # Open results.txt for file dump
