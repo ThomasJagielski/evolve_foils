@@ -3,6 +3,16 @@ import random
 
 population = []
 
+def TwoPointCrossover(parent1, parent2):
+    """Function to mate two parent strings"""
+    child1 = parent1
+    child2 = parent2
+    for i in range(min([len(parent1), len(parent2)])):
+        if bool(random.getrandbits(1)):
+            child1[i] = parent2[i]
+            child2[i] = parent1[i]
+    return (child1, child2)
+
 def EvoAlgo(population, operators, mu, lambda_, cxpb, mutpb, ngen):
     """
     Evolutionary algorithm that returns the most fit individual
