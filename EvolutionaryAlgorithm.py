@@ -10,13 +10,9 @@ def create_pop(num_indiv):
     Function to create a population
     """  
     population = dict()
-    for i in range(num_indiv):
+    for _ in range(num_indiv):
         individual = classes.Individual()
-
         population[tuple(individual)] = classes.evaluate_foil(individual)
-
-
-    
     return population
 
 def TwoPointCrossover(parent1, parent2):
@@ -49,14 +45,6 @@ def EvoAlgo(num_population, operators, mu, lambda_, cxpb, mutpb, ngen):
     lambda_ - number of offs
     """
 
-    assert cxpb + mutpb <= 1.0
-
-    # TODO: Finish Implementation
-
-    if random.Random()< mutpb:
-        pass
-    if random.Random()< cxpb:
-        pass
 
 if __name__ == "__main__":
     selected = dict(selection(create_pop(10),2))
