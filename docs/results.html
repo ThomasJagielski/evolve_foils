@@ -30,46 +30,6 @@ body {font-family: "Lato", sans-serif}
 <div class="w3-content" style="max-width:2000px;margin-top:46px">
 
   <!-- The Description Section -->
-  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="description">
-    <h2 class="w3-wide">DOCUMENTATION</h2>
-    <p class="w3-opacity"><i>Project Evolution/Narrative</i></p>
-    <p class="w3-justify">The inspiration for our project began while doing the evolutionary algorithms toolbox as an assignment for the course Software Design at Olin College of Engineering.  More specifically, we were initially motivated to write an evolutionary algorithm for FPGA integrated circuit design.  We shifted to a hardware application of evolutionary algorithms as it would be easier to visualize and ensure our code was working.  Furthermore, airfoils are something we know more about, and therefore, allowed us to focus on the algorithm implementation and code more than learning a new topic.</p>
-
-	<p class="w3-justify">We started with using random points to define the shape of the foil; however, this yielded issues with the xfoil flow simulation.</p>
-
-    </div>
-
-<!-- The Tour Section -->
-  <div class="w3-black" id="tour">
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">ARCHITECTURAL REVIEWS</h2>
-      <p class="w3-opacity w3-center"><i>Reviews are important!</i></p><br>
-		<p class="w3-justify">During our <a href="https://docs.google.com/spreadsheets/d/149bWm6W0TlRPuyDXkkflSCXZ5KmUEu_SEEUAruHf5cc/edit#gid=1809101204">first architectural review</a>, one of the major considerations was whether or not we should use random points or an equation to define the shape of our airfoil.  Furthermore, we were curious if we should initialize the algorithm with a shape such as a circle or a triangle.</p>
-		<p class="w3-justify">Moving forward from this architectural review, we decided to focus on developing our own evolutionary algorithm (previously we were using various algorithms from the DEAP package).  Consequently, we used the NACA airfoil equation to define the shape of the foil.  In doing this, we would change the coefficients from individual to individual.  The restrictions this imposes on the foils are that it must be symmetric and it had a length of one.</p>
-		<p class="w3-justify">Moving into the <a href="https://docs.google.com/forms/d/1mU0xI_YmMcO0CYVPM-GalJZjQ4NnaPgeE4YhGiTNlt8/edit#responses">second architectural review</a>, we were curious about the implementation of our evolutionary algorithm.  In order to gain better insight, we led an exercise in which people would experience the process an evolutionary algorithm goes through with crossover and mutation</p>
-      	
-	  </div>
-  </div>
-	
-  <div class="w3-white" id="AR1">
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">ARCHITECTURAL REVIEW 1.0</h2>
-      <p class="w3-opacity w3-center"><i>Reviews are important!</i></p><br>
-		<embed src="Evolving Foils Review 1.pdf" type="application/pdf" width="100%" height="550px" />
-      	
-	  </div>
-  </div>
-
-  <div class="w3-black" id="AR2">
-    <div class="w3-container w3-content w3-padding-64" style="max-width:800px">
-      <h2 class="w3-wide w3-center">ARCHITECTURAL REVIEW 2.0</h2>
-      <p class="w3-opacity w3-center"><i>Reviews are more important!</i></p><br>
-		<embed src="Architectural Review 2 Slides.pdf" type="application/pdf" width="100%" height="550px" />
-      	
-	  </div>
-  </div>
-	
-	<!-- The Description Section -->
   <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="results">
     <h2 class="w3-wide">RESULTS</h2>
     <p class="w3-opacity"><i>Tests and Outcomes</i></p>
@@ -145,3 +105,4 @@ window.onclick = function(event) {
 	
 </body>
 </html>
+
