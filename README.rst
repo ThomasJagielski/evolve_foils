@@ -1,6 +1,7 @@
 :Name: Evolving Hydrofoils using DEAP - Software Design, Olin College
 :Authors: Colin Snow, Sparsh Bansal, Thomas Jagielski
 :Version: 1.0
+:Website: https://colinmsnow.github.io/evolve_foils/
 
 ===== 
 Evolving Hydrofoils
