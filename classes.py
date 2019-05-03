@@ -109,33 +109,20 @@ def mutate(indiv, prob_add, prob_sub):
     
     if random.uniform(0,1) < prob_add:
         indiv[index] += mut
-
-        # Ensure the value is the correct sign
-        if pos_neg_coeff[index] == 1 and indiv[index] < 0:
-            indiv[index] = abs(indiv[index])
-        if pos_neg_coeff[index] == 0 and indiv[index] > 0:
-            indiv[index] = -indiv[index]
-
-        # Ensure the value is within the accepted bounds for a coefficient
-        if indiv[index] > pos_max:
-            indiv[index] = pos_max
-        if indiv[index] < -neg_max:
-            indiv[index] = -neg_max
-        
     if random.uniform(0,1) < prob_sub:
         indiv[index] -= mut
 
-        # Ensure the value is the correct sign
-        if pos_neg_coeff[index] == 1 and indiv[index] < 0:
-            indiv[index] = abs(indiv[index])
-        if pos_neg_coeff[index] == 0 and indiv[index] > 0:
-            indiv[index] = -indiv[index]
+    # Ensure the value is the correct sign
+    if pos_neg_coeff[index] == 1 and indiv[index] < 0:
+        indiv[index] = abs(indiv[index])
+    if pos_neg_coeff[index] == 0 and indiv[index] > 0:
+        indiv[index] = -indiv[index]
 
-        # Ensure the value is within the accepted bounds for a coefficient
-        if indiv[index] > pos_max:
-            indiv[index] = pos_max
-        if indiv[index] < -neg_max:
-            indiv[index] = -neg_max
+    # Ensure the value is within the accepted bounds for a coefficient
+    if indiv[index] > pos_max:
+        indiv[index] = pos_max
+    if indiv[index] < -neg_max:
+        indiv[index] = -neg_max
 
     # Ensure that 'a' is greater than 0.1 to eliminate the 'pencil' hydrofoil cases
     if index == 0 and indiv[index] < 0.1:
