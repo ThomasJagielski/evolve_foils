@@ -12,7 +12,12 @@ from deap import tools
 
 def create_x():
     """
-    Implement cosine spacing
+    Implement cosine spacing. Creates a x spacing 
+    with a higher density at the leading and 
+    trailing edges where curvature is high.
+
+    The spacing is saved in a text file and loaded 
+    when the function is called
     """
     text = open('sample16.dat', 'r')
     text = text.read()

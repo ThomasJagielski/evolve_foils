@@ -6,8 +6,6 @@ for file in ./sample16-2.dat
 do
 	#we write commands to a text file called xfoil.com, this first line overwrite the file and the subsequent lines append to it
 
-
-
 	echo "load sample16-2.dat" > xfoil.com
 	echo "" >> xfoil.com
 	echo "pane" >> xfoil.com
@@ -25,9 +23,6 @@ do
 
 	#we then run xfoil with its STDIN hooked up to the text file where we just wrote the commands to
 	xfoil  < xfoil.com 	> /dev/null 2>&1 
-
-
-
 
 	#copy the results to a results.txt file and then delete the original file
     cp sample16-2.dat.analysis results.txt

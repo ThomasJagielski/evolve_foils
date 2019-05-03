@@ -45,14 +45,6 @@ def call_xfoil():
 
 
     # Try to run the xfoil simulation multiple times if it does not work for a given foil
-    # for i in range (10):  # Number of time to try the solver before giving up
-
-    #     try:
-    #         return data[2], data[3]  # 4 for non visc 3 for visc
-    #     except (IndexError, TypeError):
-    #         pass
-
-
 
     try:
         cl = sum([float(data[2]) , float(data[10]) , float(data[18]) ,float(data[26])])
@@ -65,19 +57,3 @@ def call_xfoil():
 
 if __name__ == "__main__":
     print(call_xfoil())
-
-# data = runXfoil.run_xfoil()
-
-
-# data = data.split(' ')
-
-# file = open('results.txt',"w")
-
-# # file.write(str(cl))
-# # file.write(str(cd))
-# file.close()
-
-# os.system('rm -r data_save.txt')
-
-# print(len(data))
-# print(data)

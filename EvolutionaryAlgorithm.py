@@ -73,15 +73,12 @@ def EvoAlgo(num_generations,num_indiv,top_indiv, num_cross,new_indiv_num,prob_ad
             print(key,classes.evaluate_foil(key))
 
 
-        #classes.mutate
         print(i)
-        #print(population)
+
     
 
     
 
 
 if __name__ == "__main__":
-    #selected = dict(selection(create_pop(10),2))
-    #print(type(selected))
     EvoAlgo(10,10,2,2,8,0.2,0.8)

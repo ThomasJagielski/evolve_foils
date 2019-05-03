@@ -17,12 +17,10 @@ import evaluateFoil
 import createCosineSpacing
 import pydoc
 
-# X_COORD = np.linspace(1,0,50).tolist()
-# X_COORD.extend(np.linspace(0,1,50).tolist()[1:])
+
 X_COORD = createCosineSpacing.create_x() # Implement cosine spacing in order to define the front and back of the hydrofoils better
                                          # This is useful for a higher success rate with xfoil
-# for i in range(len(X_COORD)):
-#     X_COORD[i] = round(X_COORD[i],6)
+
 
 
 class FitnessMinimizeSingle(base.Fitness):
@@ -50,12 +48,7 @@ class Individual(list):
         
 
         # Otherwise, select an initial length between min and max
-        # and populate Message with that many random characters
-        # def point(t,a,b,c,d,e,n):
-        #     point = 500*t*(a*(n/50)**1/2+b*(n/50)+c*(n/50)**2+d*(n/50)**3+e*(n/50)**4)
-        #     return point
-        # for i in range(50):
-        #     self.append(point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i]))
+
 
         '''
         For NACA 0016:
@@ -277,7 +270,7 @@ def evaluate_foil(indiv):
         return(0,)
 
 
-#CONSIDER USING DEAP 
+
 def mate(indiv, matpb):
     # TODO: Write and implement this function
     pass
