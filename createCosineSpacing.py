@@ -4,8 +4,8 @@ Use cosine spacing on the hydrofoil for a better chance of passing through the x
 import random
 import string
 import sys
-
 import numpy as np   # Used for statistics
+
 from deap import algorithms
 from deap import base
 from deap import tools

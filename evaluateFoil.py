@@ -23,8 +23,9 @@ def call_xfoil():
     # Call xfoil using bash script
     try:
         sp.call(['./runx.sh'], timeout = 1)
-    except sp.TimeoutExpired:    # If it takes more than 5 seconds, quit and return 0
-        return 0,100
+    except sp.TimeoutExpired:    # If it takes more than 1 second, quit
+        return 0,100 # Return a foil with a fitness of 0
+
     # Open results.txt for file dump
     file = open('results.txt',"r")
     # read the results.txt file
@@ -34,24 +35,18 @@ def call_xfoil():
     # Split the results from xfoil
     data = data.split('-----')
 
-    data = data[-1]
+    data = data[-1]  # Select the part where the numbers are stored
     data = data.split('  ')
 
 
 
-
-
-    
-
-
-    # Try to run the xfoil simulation multiple times if it does not work for a given foil
-
     try:
+        # Attempt to grab the coefficient of lift and drag out of the file that xfoil creates
         cl = sum([float(data[2]) , float(data[10]) , float(data[18]) ,float(data[26])])
         cd = sum([float(data[3]) , float(data[11]) , float(data[19]) ,float(data[27])])
-        return cl,cd  # 4 for non visc 3 for visc
-    except (IndexError, TypeError, ValueError):  # If file is unreadable or returns a bad string then simulation has failed so return 0 
-        return 0,100
+        return cl,cd
+    except (IndexError, TypeError, ValueError):  # If file is unreadable or returns a bad string then simulation has failed
+        return 0,100 # Return a foil with a fitness of 0
 
 
 

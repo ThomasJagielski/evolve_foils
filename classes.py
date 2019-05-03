@@ -7,19 +7,20 @@ These are functions used in the evolutionary algorithm.
 import random
 import string
 import sys
-
 import numpy as np   # Used for statistics
+import pydoc
+
 from deap import algorithms
 from deap import base
 from deap import tools
 
 import evaluateFoil
 import createCosineSpacing
-import pydoc
+
 
 
 X_COORD = createCosineSpacing.create_x() # Implement cosine spacing in order to define the front and back of the hydrofoils better
-                                         # This is useful for a higher success rate with xfoil
+                                         # This makes XFOIL throw fewer errors because the angle between panes is lower
 
 
 
@@ -44,24 +45,6 @@ class Individual(list):
     # Want to minimize a single objective: distance from the goal message
         self.fitness = FitnessMinimizeSingle()
 
-
-        
-
-        # Otherwise, select an initial length between min and max
-
-
-        '''
-        For NACA 0016:
-        def point(t,a,b,c,d,e,n):
-            point = 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
-            return point
-        for i in range(50):
-
-            point = point(1,.2969,-.126,-.3516, .2843,-.1015,X_COORD[i])
-            point = abs(point)
-            self.append(point)
-        '''
-
         # NACA Airfoil function:
         # 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
 
@@ -77,36 +60,12 @@ class Individual(list):
         self.append(round(d,4)) # Round 'd' to the nearest 4 decimals for quicker computations
         self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
 
-
-def TwoPointCrossover(parent1, parent2):
-    """Function to mate two parent strings"""
-    child1 = parent1
-    child2 = parent2
-    for i in range(min([len(parent1), len(parent2)])):
-        if bool(random.getrandbits(1)):
-            child1[i] = parent2[i]
-            child2[i] = parent1
-
-        # NACA Airfoil function:
-        # 5*.16*t*(a*(n)**(1/2)+b*(n)+c*(n)**2+d*(n)**3+e*(n)**4)
-
-        a = random.uniform(0.1,.5) # Define the 'a' coefficient for the NACA airfoil function
-        b = random.uniform(-.5,0) # Define the 'b' coefficient for the NACA airfoil function
-        c = random.uniform(-.5,0) # Define the 'c' coefficient for the NACA airfoil function
-        d = random.uniform(0,.5) # Define the 'd' coefficient for the NACA airfoil function
-        e = random.uniform(-.5,0) # Define the 'e' coefficient for the NACA airfoil function
-        
-        self.append(round(a,4)) # Round 'a' to the nearest 4 decimals for quicker computations
-        self.append(round(b,4)) # Round 'b' to the nearest 4 decimals for quicker computations
-        self.append(round(c,4)) # Round 'c' to the nearest 4 decimals for quicker computations
-        self.append(round(d,4)) # Round 'd' to the nearest 4 decimals for quicker computations
-        self.append(round(e,4)) # Round 'e' to the nearest 4 decimals for quicker computations
 
 class ViewIndividual(list):
     """
     When we finish the program, save the best airfoil so we can view it later
 
-    TODO: Fix tis to work with the new definition of airfoils.
+
     """
     def __init__(self, data):
         
@@ -224,18 +183,14 @@ def evaluate_foil(indiv):
     for i in range(int(len(X_COORD)/2)):
         indiv_y[i] = round(indiv_y[i],6)
     
-    
     # Convert each of the numeric coordinates to a string of x and y
     full_string = ''
     for j in range(len(X_COORD)):
-
         if j < len(X_COORD)/2:
             full_string += ( ' ' + str(X_COORD[j]) + ' ' + str(indiv_y[j]) + '\n')
         else:
             full_string += (' ' + str(X_COORD[j]) + ' ' + str(-indiv_y[len(X_COORD)-j-1]) + '\n')
 
-    
-    
     # Write the x and y coordinates to a text file with two columns
     # The left column as the x and the right column as the y
     file = open('sample16-2.dat','w')
@@ -243,7 +198,6 @@ def evaluate_foil(indiv):
     file.write(full_string)
     
     file.close()
-    
     
     # Save the data to sample16-2.dat
     # Ensure the foil converged and works with xfoil
@@ -269,11 +223,6 @@ def evaluate_foil(indiv):
     except ValueError:  # Error occurs when xfoil returns a malformatted string because the value is either too high or does not exist
         return(0,)
 
-
-
-def mate(indiv, matpb):
-    # TODO: Write and implement this function
-    pass
 
 if __name__ == "__main__":
     sample_individual = Individual()
