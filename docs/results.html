@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Evolving Airfoils</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+body {font-family: "Lato", sans-serif}
+.mySlides {display: none}
+</style>
+<body>
+	<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-black w3-card">
+    <a class="w3-bar-item w3-button w3-padding-large w3-hide-medium w3-hide-large w3-right" href="javascript:void(0)" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large">HOME</a>
+    <a href="installation.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">IMPLEMENTATION</a>
+    <a href="documentation.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">DOCUMENTATION</a>
+	<a href="results.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">RESULTS</a>
+	<a href="authors.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">AUTHORS</a>
+	<a href="acknowledgments.html" class="w3-bar-item w3-button w3-padding-large w3-hide-small">ACKNOWLEDGMENTS</a>
+   </div>
+</div>
+
+<!-- Page content -->
+<div class="w3-content" style="max-width:2000px;margin-top:46px">
+
+  <!-- The Description Section -->
+  <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:800px" id="results">
+    <h2 class="w3-wide">RESULTS</h2>
+    <p class="w3-opacity"><i>Tests and Outcomes</i></p>
+    <p class="w3-justify">In our testing, we were able to create an airfoil that XFOIL estimates to have a lift to drag ratio of 103 combined over 4 angles of attack, and has a maximum lift to drag ratio of 156.42 at an 11-degree angle of attack. This is very close to and even better than some standard symmetric foils, especially because it can adapt to any Reynolds number perfectly instead of just being a close guess.</p>
+
+	<p class="w3-justify">We then continued on to more complex fluid dynamics solvers, using SolidWorks flow simulation to check for laminar and turbulent flow in our model. We found that the foil performs much as it did in XFOIL, though with slightly more turbulence as it gets close to 12 degrees, which is to be expected.</p>
+
+    </div>
+	
+<div class="w3-black" id="tour">
+  <!-- Automatic Slideshow Images -->
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-19 11-54-13.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small"> 
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-10 23-42-44.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-20 11-56-27.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-10 23-49-55.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-20 14-01-53.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+  <div class="mySlides w3-display-container w3-center">
+    <img src="Screenshot from 2019-04-10 23-58-00.png" style="width:50%">
+    <div class="w3-display-bottommiddle w3-container w3-text-black w3-padding-32 w3-hide-small">
+    </div>
+  </div>
+</div>
+	<!-- The Contact Section -->
+<!-- The Contact Section -->
+	<div class="w3-white" id="imports2">
+  <div class="w3-container w3-content w3-padding-64" style="max-width:800px" id="contact">
+    <h2 class="w3-wide w3-center">CONTACT</h2>
+    <p class="w3-opacity w3-center"><i>Suggestions? Potential Applications? Drop a note!</i></p>
+    <div class="w3-row w3-padding-32">
+      <div class="w3-col w3-large w3-center">
+        <i class="fa fa-map-marker" style="max-width:800px"></i>Olin College of Engineering, Needham MA<br>
+        <i class="fa fa-envelope" style="max-width:800px"> </i> Email: sbansal@olin.edu<br>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- End Page Content -->
+</div>
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity w3-light-grey w3-xlarge">
+  <p class="w3-medium">Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+<script>
+// Automatic Slideshow - change image every 4 seconds
+var myIndex = 0;
+carousel();
+
+function carousel() {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";  
+  }
+  myIndex++;
+  if (myIndex > x.length) {myIndex = 1}    
+  x[myIndex-1].style.display = "block";  
+  setTimeout(carousel, 100);    
+}
+	
+	
+// When the user clicks anywhere outside of the modal, close it
+var modal = document.getElementById('ticketModal');
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
+	
+</body>
+</html>
+

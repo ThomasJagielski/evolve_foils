@@ -39,7 +39,6 @@ class Individual(list):
     We represent the foil as a list of points (x,y) so it can
     be more easily manipulated by the genetic operators.
     """
-    
     def __init__(self):
         """
         Create a new foil using the NACA airfoils function definition
