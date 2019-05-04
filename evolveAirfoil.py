@@ -3,9 +3,12 @@
 Uses the DEAP (Distributed Evolutionary Algorithms in Python) framework,
 http://deap.readthedocs.org
 
-Most of this code is from the Evolutionary Algorithms Toolbox.
 For testing purposes, we are using the DEAP package and the code from the toolbox.
 We are working on writing our own evolutionary algorithm, but started with this for testing purposes.
+The code remains a function method of generating foils using evolutionary algorithms.
+
+NOTE: This code is from the Evolutionary Algorithms Toolbox for the Software Design Course at Olin College of Engineering
+More information about this toolbox is provided at: https://sd19spring.github.io/toolboxes/evolutionary-algorithms
 
 """
 
@@ -24,14 +27,8 @@ import classes
 #  Global variables
 # -----------------------------------------------------------------------------
 
-# Allowable characters include all uppercase letters and space
-# You can change these, just be consistent (e.g. in mutate operator)
-
-
 # Control whether all Messages are printed as they are evaluated
 VERBOSE = False
-
-
 
 # -----------------------------------------------------------------------------
 # DEAP Toolbox and Algorithm setup
@@ -81,17 +78,7 @@ def evolve():
     stats.register("min", numpy.min)
     stats.register("max", numpy.max)
     hof  = tools.HallOfFame(1)
-
-    # Run simple EA
-    # (See: http://deap.gel.ulaval.ca/doc/dev/api/algo.html for details)
-    # pop, log = algorithms.eaSimple(pop,
-    #                                toolbox,
-    #                                cxpb=0.05,    # Prob. of crossover (mating)
-    #                                mutpb=0.05,   # Probability of mutation
-    #                                ngen=10,
-    #                                halloffame = hof,    # Num. of generations to run
-    #                                stats=stats)
-
+    # Run the eaMuPlusLambda Evolutionary Algorithm from the DEAP toolbox
     pop, log = algorithms.eaMuPlusLambda(pop,
                                    toolbox,
                                    cxpb=0.05,    # Prob. of crossover (mating)
